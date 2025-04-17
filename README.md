@@ -120,4 +120,4 @@ This extension uploads your code to our servers to enable sharing. Please do not
 
 ## Support
 
-For support, please open an issue on the GitHub repository or contact us at support@codesharelinkapp.com.
+For support, please open an issue on the GitHub repository or contact us at ranjankumarpandit92054@gmail.com.
