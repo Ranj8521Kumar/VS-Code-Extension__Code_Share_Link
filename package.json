@@ -1,0 +1,103 @@
+{
+  "name": "code-share-link",
+  "displayName": "Code Share Link",
+  "description": "Share your code via links with customizable permissions",
+  "version": "0.1.0",
+  "publisher": "codesharelinkapp",
+  "icon": "icon.svg",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codesharelinkapp/code-share-link"
+  },
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:codeShareLink.generateLink",
+    "onCommand:codeShareLink.managePermissions",
+    "onCommand:codeShareLink.openSharedProject"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codeShareLink.generateLink",
+        "title": "Code Share Link: Generate Shareable Link"
+      },
+      {
+        "command": "codeShareLink.managePermissions",
+        "title": "Code Share Link: Manage Link Permissions"
+      },
+      {
+        "command": "codeShareLink.openSharedProject",
+        "title": "Code Share Link: Open Shared Project"
+      }
+    ],
+    "configuration": {
+      "title": "Code Share Link",
+      "properties": {
+        "codeShareLink.apiUrl": {
+          "type": "string",
+          "default": "https://api.codesharelinkapp.com",
+          "description": "URL of the Code Share Link API server"
+        },
+        "codeShareLink.autoSync": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically synchronize changes with the server"
+        },
+        "codeShareLink.syncInterval": {
+          "type": "number",
+          "default": 5000,
+          "description": "Interval in milliseconds for automatic synchronization"
+        },
+        "codeShareLink.excludePatterns": {
+          "type": "array",
+          "default": [
+            "node_modules/**",
+            ".git/**",
+            "dist/**",
+            "build/**",
+            "out/**",
+            "*.log"
+          ],
+          "description": "Patterns to exclude from synchronization"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.9.36",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.60.0",
+    "eslint": "^7.27.0",
+    "glob": "^7.1.7",
+    "mocha": "^11.1.0",
+    "typescript": "^4.3.2",
+    "vsce": "^1.97.0",
+    "vscode-test": "^1.5.2"
+  },
+  "dependencies": {
+    "axios": "^1.8.4",
+    "dotenv": "^16.5.0",
+    "minimatch": "^10.0.1",
+    "mongoose": "^8.13.2",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.1.2",
+    "uuid": "^8.3.2"
+  }
+}
